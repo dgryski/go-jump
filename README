@@ -1,0 +1,3 @@
+A port of Google's "Jump" Consistent Hash function
+
+Godoc: http://godoc.org/github.com/dgryski/go-jump
