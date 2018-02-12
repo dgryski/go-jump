@@ -7,7 +7,7 @@ http://arxiv.org/abs/1406.2294
 */
 package jump
 
-// Hash consistently chooses a hash bucket number in the range [0, numBuckets) for the given key. numBuckets must be >= 1.
+// Hash consistently chooses a hash bucket number in the range [0...numBuckets-1] for the given key. numBuckets must be >= 1.
 func Hash(key uint64, numBuckets int) int32 {
 
 	var b int64 = -1
