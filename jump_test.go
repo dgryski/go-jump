@@ -1,6 +1,7 @@
 package jump
 
 import (
+	"strconv"
 	"testing"
 )
 
@@ -56,5 +57,17 @@ func TestGolden(t *testing.T) {
 			t.Errorf("compat failed: Hash(%v, %v)=%v, want %v\n", tt.k, tt.buckets, g, tt.out)
 
 		}
+	}
+}
+
+var sink int32
+
+func BenchmarkJump(b *testing.B) {
+	for _, v := range []int{1,2,4,8,16,32,64,128,256,512,1024,2048,8192} {
+		b.Run(strconv.Itoa(v), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				sink += Hash(uint64(i), v)
+			}
+		})
 	}
 }
